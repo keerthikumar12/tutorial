@@ -98,11 +98,4 @@ The app will be available at `http://localhost:3000`.
 1. **Backend Integration**: While mock data is used for product listings, future versions could integrate with an API for dynamic data fetching.
 2. **Enhanced Search Functionality**: Implementing a more advanced search with filtering options.
 
-## Optional - Live Deployment
-This project has been deployed to (https://react-js-plants-e-commerce-website.vercel.app/).
 
-## License
-This project is licensed under the MIT License.
-```
-
-Feel free to modify any part as needed!
