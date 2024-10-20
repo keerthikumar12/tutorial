@@ -30,7 +30,7 @@ This project implements an E-commerce Listing Page UI based on a provided Figma 
 ├── src
 │   ├── components
 │   │   ├── Cart.js
-│   │   ├── Filter.js
+│   │   ├── FilterCard.js
 │   │   ├── Footer.js
 │   │   ├── Header.js
 │   │   ├── Home.js
@@ -42,7 +42,7 @@ This project implements an E-commerce Listing Page UI based on a provided Figma 
 │   ├── App.js
 │   ├── index.js
 │   │   ├── Cart.css
-│   │   ├── Filter.css
+│   │   ├── FilterCard.css
 │   │   ├── Footer.css
 │   │   ├── Header.css
 │   │   ├── Home.css
