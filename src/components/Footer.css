@@ -1,0 +1,200 @@
+.footer-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #F0FFE5;
+    border: none;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+  }
+  
+  .footer-lists-card {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  .footer-subscribe-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-subscribe-heading {
+    color: #000000;
+    font-family: 'Poppins';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 200px;
+    margin-bottom: 8px;
+    height: 60px;
+  }
+  
+  .footer-subscribe-desp {
+    color: #838383;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 220px;
+    margin-top: 0px;
+  }
+  
+  .footer-subscribe-input {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Poppins';
+    height: 34px;
+    width: 210px;
+    font-size: 13px;
+    font-weight: 400;
+    border: 1px solid #0000004D;
+    padding-left: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-subscribe-btn {
+    background-color: #247822;
+    border: none;
+    height: 36px;
+    width: 130px;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .footer-about-us-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-lists-headings {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    height: 32px;
+  }
+  
+  .footer-lists {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+  }
+  
+  .footer-lists-item {
+    color: #999999;
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    list-style-type: none;
+    margin-bottom: 6px;
+  }
+  
+  .footer-service-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-useful-links-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 130px;
+  }
+  
+  .footer-get-in-touch-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 170px;
+  }
+  
+  .footer-plantspage-heading-desp-follow-us-card {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  .footer-plantspage-heading {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 0px;
+  }
+  
+  .footer-plantspage-desp {
+    color: #838383;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 0px;
+  }
+  
+  .footer-follow-us-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-follow-us-text {
+    color: #000000;
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 500;
+  }
+  
+  .footer-follow-us-icons-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-instagram-icon {
+    height: 26px;
+    width: 26px;
+    margin-right: 20px;
+  }
+  
+  .footer-facebook-icon {
+    height: 26px;
+    width: 26px;
+    margin-right: 20px;
+  }
+  
+  .footer-threads-icon {
+    height: 26px;
+    width: 26px;
+    margin-right: 20px;
+  }
+  
+  .footer-youtube-icon {
+    height: 26px;
+    width: 26px;
+    margin-right: 20px;
+  }
+  
+  .footer-linkedin-icon {
+    height: 26px;
+    width: 26px;
+  }
+  
+  .footer-hr-line {
+    border: 0.7px solid #0000004D;
+    width: 100%;
+    max-width: 1089px;
+    margin-top: 36px;
+  }
+  
+  .footer-all-right-reserved-text {
+    color: #0000004D;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 40px;
+  }

@@ -1,0 +1,180 @@
+.header-main-card {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 100px 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .website-logo-text-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .website-logo-image {
+    height: 60px;
+    width: 60px;
+    margin-right: 8px;
+  }
+  
+  .chaperone-text {
+    color: #0F4811;
+    font-family: 'Poppins';
+    font-size: 25px;
+    font-weight: 600;
+  }
+  
+  .header-navigation-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  }
+  
+  .navigation-list-item {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    list-style-type: none;
+  }
+  
+  .current-navigation-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F3A939;
+    padding-top: 18px;
+  }
+  
+  .hr-line {
+      margin-top: 6px;
+      border: 1px solid #F3A939;
+      width: 20px;
+    }
+  
+  .navigation-tools-service-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .down-arrow-icon {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  
+  .my-profile-cart-card {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
+    justify-self: end;
+  }
+  
+  .my-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .my-profile-icon {
+    height: 20px;
+    width: 20px;
+    margin-bottom: 0px;
+  }
+  
+  .my-profile-text {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  
+  .cart-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 86px;
+    width: 46px;
+    justify-content: flex-end;
+    margin-left: 10px;
+  }
+  
+  .cart-img {
+    height: 28px;
+    width: 28px;
+    margin-bottom: 0px;
+  }
+  
+  .cart-text {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 500; 
+    margin-top: 2px;
+  }
+  
+  .cart-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F3A939;
+    border-radius: 50%;
+    border: none;
+    height: 20px;
+    width: 20px;
+    color: #000000;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 300;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .search-card {
+    display: flex;
+    align-items: flex-end;
+    justify-self: center;
+    border-bottom: 1px solid #00000099;
+    width: 370px;
+    padding: 0px;
+    grid-column: span 3;
+  }
+  
+  .search-icon {
+    color: #838383;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+  }
+  
+  .search-input {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    width: 300px;
+    height: 26px;
+    padding-left: 6px;
+    border: none;
+    background-color: transparent;
+    padding-bottom: 0px;
+  }
+  
+  .leaf-image {
+    width: 32px;
+    height: 24px;
+    margin-bottom: 0px;
+  }
+  
+  .cart-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+  }

@@ -1,0 +1,67 @@
+.filter-card {
+    background-color: #F0FFE5;
+    background-size: cover;
+    height: 650px;
+    width: 26%;
+    padding: 16px;
+  }
+  
+  .filter-clear-all-text-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #A8A8A8;
+  }
+  
+  .filter-text {
+    color: #6E6E6E;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+  }
+  
+  .clear-all-text {
+    color: #6E6E6E;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+  }
+  
+  .filter-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-left: 0px;
+  }
+  
+  .filter-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #A8A8A8;
+    list-style-type: none;
+    margin-bottom: 20px;
+  }
+  
+  .filter-item-text {
+    color: #6E6E6E;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 0px;
+  }
+  
+  .plus-icon {
+    color: #6E6E6E;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .last-filter {
+    border-bottom: none;
+  }

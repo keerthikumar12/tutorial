@@ -1,0 +1,6 @@
+/* src/components/Pagination.css */
+.pagination-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

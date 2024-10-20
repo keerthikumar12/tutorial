@@ -1,24 +1,864 @@
-import logo from './logo.svg';
+import { v4 as uuidv4 } from 'uuid';
+import { useState} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './components/Home'
+import MyContext from './context/MyContext';
+import Pagination from './components/Pagination'
+import Cart from './components/Cart';
+import ThankYouPage from './components/ThankYouPage';
 import './App.css';
 
-function App() {
+const nurseryList = [
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316319/362237370ea139219155cf9fca2448d3_zqlzqh.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316379/8375cef653c6b9ae388a7f2dda4ba454_m02uz5.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316369/935a62fb31df9354ded9299559307ae6_krbrku.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316360/7eca96d5008198d2181b991de6f19034_dbxe6j.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316347/ed50532940537d9d39d2626bb7a95167_ynrjhm.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729316337/7f83ab9fd1481e530fd7e03257a1bb07_h9mxol.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729315770/1218900e6bd6cc6f3d5a104c0dbb8212_mrbhar.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729315760/bbfa90988173614195fa81d43aa2bb63_ns34et.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729315866/4fa5aaae113083a0db504c05b0632860_pooyqq.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729315889/6b210bc07ae9706bbb2921a7a22ae2d8_j5pdch.png',
+    name: 'Lorem ipsum dolor sit amet. Aut ipsam illum et nostrum',
+  },
+]
+
+const productList = [
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325234/e1ce63ff429a0c018fd6e2e5dd614458_w17zzz.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325650/7973d62829a030074ad8b6ad34_zf5crc.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+  {
+    id: uuidv4(),
+    imageUrl: 'https://res.cloudinary.com/dojcy1a17/image/upload/v1729325677/daa994fdb511faa82ea79a5ef58fbb1a_zxihg3.png',
+    plantName: 'Monsterra',
+    description: 'Indoor Plant, Low maintenance',
+    rating: 4.9,
+    originalPrice: 359,
+    discountPrice: 299,
+  },
+]
+
+const App = () => {
+  const [currentProductList, setCurrentProductList] = useState(productList.slice(0, 9));
+  const [websitePageNo, setWebsitePageNo] = useState(1);
+  const [currentCartData, setCurrentCartData] = useState({})
+  const [cartCout, setCartCount] = useState(0)
+
+  const updateCartCount = () => {
+    setCartCount(prevState => prevState + 1)
+  }
+
+  const updateCurrentCartData = id => {
+    const currentData = productList.filter(eachData => eachData.id === id)
+
+    setCurrentCartData(currentData[0])
+  }
+  
+  const increaseWebsitePageNo = () => {
+    if (websitePageNo < 9) {
+      setWebsitePageNo(prevState => {
+        const newPageNo = prevState + 1;
+        changeCurrentProductList(newPageNo);
+        return newPageNo;
+      });
+    }
+  };
+  
+  const decreaseWebsitePageNo = () => {
+    if (websitePageNo > 1) {
+      setWebsitePageNo(prevState => {
+        const newPageNo = prevState - 1;
+        changeCurrentProductList(newPageNo);
+        return newPageNo;
+      });
+    }
+  };
+  
+  const changeCurrentProductList = (pageNo) => {
+    const startIndex = (pageNo * 9) - 9;
+    const endIndex = startIndex + 9;
+  
+    setCurrentProductList(productList.slice(startIndex, endIndex));
+  };
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={{
+      nurseryList,
+      productList,
+      currentProductList,
+      updateCurrentProductList: changeCurrentProductList,
+      currentPageNo: websitePageNo,
+      increaseCurrentPageNO: increaseWebsitePageNo,
+      decreaseCurrentPageNo: decreaseWebsitePageNo,
+      currentCartData,
+      updateCurrentCartData,
+      cartCout,
+      updateCartCount,
+    }}>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/page/:id' element={<Pagination />} />
+          <Route exact path='/cart' element={<Cart />} />
+          <Route exact path='/thankyou' element={<ThankYouPage />} />
+        </Routes>
+      </BrowserRouter>
+    </MyContext.Provider>
   );
 }
 

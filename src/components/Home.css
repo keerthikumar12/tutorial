@@ -1,0 +1,183 @@
+.home-offer-call-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    background-color: #165315;
+    color: white;
+    align-items: center;
+  }
+  
+  .free-shipping-text {
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 500;
+    grid-column: 2;
+    justify-self: start;
+  }
+  
+  .call-us-text {
+    font-family: 'Inter';
+    font-size: 14px;
+    font-weight: 500;
+    grid-column: 3;
+    margin-right: 40px;
+    justify-self: end;
+  }
+  
+  .plants-post-btn-desp-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .plants-post-btn-card {
+    display: grid;
+    grid-template-columns: 126px 126px;
+    justify-self: flex-start;
+  }
+  
+  .platns-btn {
+    background-color: #165315;
+    width: 114px;
+    height: 37px;
+    border: none;
+    box-shadow: 0px 5px 10px 0px #0000004D;
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .post-btn {
+    background-color: transparent;
+    width: 114px;
+    height: 37px;
+    border: 1px solid #0000004D;
+    color: #0000004D;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 300;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .desp-text {
+    color: #838383;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 24px;
+    margin-bottom: 0px;
+  }
+  
+  .nursery-card {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 0px;
+    position: relative;
+  }
+  
+  .nursery-text {
+    color: #000000;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 0px;
+  }
+  
+  .nursery-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 0px;
+  }
+  
+  .nursery-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    margin-right: 26px;
+    width: 140px;
+  }
+  
+  .nursery-image {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .nursery-item-name {
+    color: #838383;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    min-width: 130px;
+  }
+  
+  .right-up-arrow-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: flex-end;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 60px;
+    margin-bottom: 30px;
+  }
+  
+  .right-arrow-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(109, 109, 109, 0.7);
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: none;
+    margin-right: 26px;
+    margin-bottom: 10px;
+  }
+  
+  .right-up-arrow {
+    color: #FFFFFF;
+    font-size: 24px;
+  }
+  
+  .up-arrow-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6E6E6E;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: none;
+    margin-top: 12px;
+    margin-right: 10px;
+  }
+  
+  .whatsapp-image {
+    height: 55px;
+    width: 55px;
+  }
+  
+  .filter-product-card {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 36px;
+  }
